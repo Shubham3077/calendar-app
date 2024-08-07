@@ -27,9 +27,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-
 This project is a user interface for a calendar application, designed with a focus on providing an intuitive and interactive experience. Below are the primary features and functionalities implemented.
 
 ## Features
@@ -46,24 +43,13 @@ This project is a user interface for a calendar application, designed with a foc
 
 
 
-### Built With
+## Built With
 React : for rendering UI
 Tailwind: for styling
 ReactDND: drap and drop library for supporting drag and drop of events
 uuid: for generating unique id
 
-
-* [![React][React.js]][React-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- GETTING STARTED -->
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
 
 ### Installation
@@ -79,28 +65,17 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    npm install
    ```
-3. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+3. npx vite or npm run dev to start the project.
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Your Name - [@your_github](https://github.com/Shubham3077) - rdfsshubham@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://calendar-app-mocha-six.vercel.app/]
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>  
-
-## libaries used
-
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 

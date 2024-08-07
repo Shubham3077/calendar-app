@@ -1,3 +1,5 @@
+// contains most of the logical part of the app.
+
 export function getRandomColor() {
     let color = "hsl(" + Math.random() * 360 + ", 100%, 75%)";
     return color;
