@@ -41,8 +41,6 @@ This project is a user interface for a calendar application, designed with a foc
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 ## Built With
 React : for rendering UI
 Tailwind: for styling
@@ -70,9 +68,19 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_github](https://github.com/Shubham3077) - rdfsshubham@gmail.com
+Your Name - [@shubham30777](https://github.com/Shubham3077) - rdfsshubham@gmail.com
 
 Project Link: [https://calendar-app-mocha-six.vercel.app/]
+
+## Takes from project
+Learnings
+1. Handling date and time in JavaScript
+2. ⁠css grid
+3. ⁠drag and drop in react
+
+Most difficult part was to handle drag and drop along with the time, it was difficult to imagine how moving event on canvas will effect time
+
+I would have implemented the time and coordinate calculation better and covered all the use cases around it.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>  
