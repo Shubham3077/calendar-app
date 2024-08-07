@@ -21,7 +21,7 @@ function Calendar() {
   }
 
   return <div className="w-lvw bg-white">
-    <Header month={month} year={year} setMonth={setMonth} setYear={setYear} handleDateFocus={handleDateFocus}/>
+    <Header month={month} year={year} setMonth={setMonth} setYear={setYear} handleDateFocus={handleDateFocus}/> 
     <DateGrid month={month} year={year} />
   </div>;
 }

@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import DroppableGrid from "./DroppableGrid";
-import { getRandomColor, getResourceFromTop, resolveTimeStamp } from "../utils";
+import { getRandomColor, resolveTimeStamp } from "../utils";
+import { v4 as uuidv4 } from 'uuid';
+
 
 const resources = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S"];
 const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
@@ -13,13 +15,11 @@ function DateGrid({ month, year }) {
     const numberOfDays = new Date(year, month,0).getDate();
     const date = new Date(year, month, 1);
     const dayOfWeek = date.getDay();
-    const lastEventId = useRef(1);
 
-    const [events, _setEvents] = useState([{ id: 0,color: "rgba(226,0,0,0.5)", name: "Event 1", startTime: 1722950554218, endTime: 1722951554218, x: 0, y: 0 }]);
+    const [events, _setEvents] = useState([{"id":"91ba5531-deda-44dc-b15d-d871310492b3","name":"Event 0","color":"hsl(127.11734956479367, 100%, 75%)","startTime":1722459060000,"endTime":1722462660000,"x":235,"y":100},{"id":"3a952289-8c51-433c-913f-de32f88d1481","name":"Event 1","color":"hsl(23.083740103874327, 100%, 75%)","startTime":1722471048000,"endTime":1722474648000,"x":568,"y":271},{"id":"6915a713-5a08-4867-900f-b4081ef08aa8","name":"Event 2","color":"hsl(37.26207651096387, 100%, 75%)","startTime":1722456324000,"endTime":1722459924000,"x":159,"y":356}]);
 
     useEffect(() => {
         const savedEvents = localStorage.getItem("events");
-        lastEventId.current = JSON.parse(localStorage.getItem("lastEventId") || "1");
         try {
             if(savedEvents) {
                 setEvents(JSON.parse(savedEvents));
@@ -31,17 +31,20 @@ function DateGrid({ month, year }) {
     },[])
 
     const setEvents = (newEvents) => {
-        newEvents && localStorage.setItem("events", JSON.stringify(newEvents));
+        if(newEvents?.length) {
+            localStorage.setItem("events", JSON.stringify(newEvents));
+        } else {
+            localStorage.removeItem("events");
+        }
         _setEvents(newEvents);
     }
 
     const addEvent = (x, y) => {
         const newEvents = [...events];
-        lastEventId.current = lastEventId.current + 1;
         let { startTime, endTime } = resolveTimeStamp({ x, y, month, year, eventWidth: 100});
-        
+
         newEvents.push({
-            id: lastEventId.current,
+            id: uuidv4(),
             name: `Event ${events.length}`,
             color: getRandomColor(),
             startTime,
@@ -50,7 +53,6 @@ function DateGrid({ month, year }) {
             y
         })
         
-        localStorage.setItem("lastEventId", JSON.stringify(lastEventId.current))
         setEvents(newEvents)
     }
 

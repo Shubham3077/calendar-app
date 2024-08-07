@@ -10,27 +10,26 @@ function DroppableGrid({ length, width, events, addEvent, setEvents, month, year
     const containerTop = useRef(0);
     const onDrop = (item , monitor ) => {
         const delta = monitor.getDifferenceFromInitialOffset();
+        // This function returns the difference between the initial drag position and the current mouse position.
         const event = events.find(event => event.id === item.id);
         
         const left = Math.round(event.x + delta.x);
         const top = Math.round(event.y + delta.y);
 
-        const {startTime, endTime} = resolveTimeStamp({ x: left,y: top, month, year, eventWidth: 100 })
-        setEvents(p => {
-            const newEvents = p.map(event => {
-                if(event.id === item.id){
-                    return {
-                        ...event,
-                        x: left,
-                        y: top,
-                        startTime,
-                        endTime
-                    }
+        const {startTime, endTime} = resolveTimeStamp({ x: left,y: top, month, year, eventWidth: 100 }); //calculates the start and end times of an event based on its position on the grid.
+        const newEvents = events.map((e => {
+            if(event.id === e.id) {
+                return {
+                    ...e,
+                    x: left,
+                    y: top,
+                    startTime,
+                    endTime
                 }
-                return event
-            })
-            return newEvents;
-        })
+            }
+            return e;
+        }))
+        setEvents(newEvents)
     }
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.EVENT,
@@ -65,3 +64,4 @@ function DroppableGrid({ length, width, events, addEvent, setEvents, month, year
 }
 
 export default DroppableGrid;
+
